@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Shwoup</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/shwoup.css">
+    <script type="text/javascript" src="lib/prototype.js"></script>
+    <script type="text/javascript" src="lib/s2.js"></script>
+    <script type="text/javascript" src="lib/jsonp.js"></script>
+    <script type="text/javascript" src="src/shwoup.js"></script>
+  </head>
+  <body>
+    <div id="images"></div>
+    <script type="text/javascript">
+      grid = new Grid($("images"), 8, 6, 90);
+
+      apiKey = "e3544bd7a270c430c9058acb338727ce";
+      url = "http://api.flickr.com/services/rest/?method=" + "flickr.photos.getRecent" +
+        "&format=json" + "&api_key=" + apiKey + "&per_page=1";
+      document.observe("dom:loaded", function() {
+        setInterval("grid.update(url)", 3000);
+      });
+    </script>
+  </body>
+</html>
